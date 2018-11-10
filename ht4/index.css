@@ -1,0 +1,17 @@
+/*
+TOOMUCH svg icons here:
+http://takingthereins.org/wp-content/uploads/intense-cache/icons/plugin/elusive/
+*/
+
+.wrapper {
+	margin: 0 auto;
+	width: 50rem;
+}
+
+ul {
+	list-style-position: inside;
+	list-style-type: none;
+}
+li {
+	margin-bottom: 10px
+}
