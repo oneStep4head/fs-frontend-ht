@@ -17,6 +17,7 @@
 	--default-btn-txt-color: #fff;
 	--input-border-color: #ddd;
 	--input-placeholder-color: #7c8495;
+	--label-txt-color: #7c8495;
 }
 * {
 	margin: 0;
@@ -260,12 +261,12 @@ input[type="checkbox"]:checked + .c-toggler__btn::before {
 /* INPUT 
 Сломал глаза, но так и не увидел, почему не работает ::placeholder, походу тайпа где-то :< */
 .label {
-	position: relative;
-	display:inline-block;
 	width: 100%;
+	position: relative;
+	display: inline-block;
 	font-family: var(--font-family-regular);
 	font-weight: bold;
-	color: var(--input-placeholder-color);
+	color: var(--label-txt-color);
 }
 .input {
 	width: 100%;
@@ -280,19 +281,16 @@ input[type="checkbox"]:checked + .c-toggler__btn::before {
 	font-weight: bold;
 	font-size: 1rem;
 	color: var(--secondary-color);
-	background-origin: content-box;
-	background-repeat: no-repeat;
-	background-position: right center;
 }
 .input:focus {
 	border-color: var(--primary-color);
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.09);
 }
-.input:placeholder, .input::-webkit-input-placeholder, .input::-ms-input-placeholder {
+.input::placeholder, .input::-webkit-input-placeholder, .input::-ms-input-placeholder {
 	opacity: 1;
 	color: var(--input-placeholder-color);
 	font-family: var(--font-family-regular);
-	font-weight: 100;
+	font-weight: normal;
 }
 .input:focus::placeholder, .input:focus::-webkit-input-placeholder, .input:focus::-ms-input-placeholder {
 	color: transparent;
@@ -301,12 +299,65 @@ input[type="checkbox"]:checked + .c-toggler__btn::before {
 	opacity: 0.5;
 	cursor: not-allowed;
 }
-.label_valid-input .input {
+.input-checker {
+}
+.input + .input-checker::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: .5rem;
+	transform: translate(-50%, -50%);
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.input_valid-input + .input-checker::before {
+	width: 12px;
+	height: 12px;
 	background-image: url(img/icon-input-valid.svg);
 }
-.input_invalid-input .input {
-	background-image: url(img/icon-input-invalid.svg);
+.input_invalid-input {
+	color: var(--error-color);
 }
+.input_invalid-input + .input-checker::before {
+	content: '?';
+	color: var(--error-color);
+}
+.input_invalid-input + .input-checker::after {
+	position: absolute;
+	content: attr(data-error);
+	bottom: -20px;
+	position:absolute;
+	display: block;
+	color: var(--error-color);
+	font-weight: normal;
+	font-size: .7rem;
+}
+/*Search*/
+.search-field {
+	width:100%;
+	position: relative;
+	display:inline-block;
+}
+.search-field::before {
+	content: '';
+	position:absolute;
+	width: 14px;
+	height: 13px;
+	top: 50%;
+	left: 1.5rem;
+	transform: translate(-50%, -50%);
+	background-image: url(img/icon-search.svg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+
+.search {
+	padding-left: 42px;
+}
+
+
+
+
 /*
 .i-bascet-svg {
 	vertical-align: middle;

@@ -83,19 +83,32 @@
 			</ul>
 			<ul>Input
 				<li>
-					<label for="" class="label">First Name
+					<label for="" class="label">
 						<input type="text" class="input" placeholder="First Name">
-						<span class="input-resulter"></span>
+						<span class="input-checker"></span>
 					</label>
 				</li>
 				<li>
 					<input disabled class="input" placeholder="First Name" type="text">
 				</li>
 				<li>
-					<input class="input input_valid" placeholder="First Name" type="text">
+					<label for="" class="label">
+						<input type="text" class="input input_valid-input" placeholder="First Name">
+						<span class="input-checker"></span>
+					</label>
 				</li>
 				<li>
-					<input class="input input_invalid" placeholder="First Name" type="text">
+					<label for="" class="label">
+						<input type="text" class="input input_invalid-input" placeholder="First Name">
+						<span class="input-checker" data-error="Something is wrong, please check your name"></span>
+					</label>
+				</li>
+			</ul>
+			<ul>Search
+				<li>
+					<span class="search-field">
+						<input type="text" class="input search">
+					</span>
 				</li>
 			</ul>
 		</div>
