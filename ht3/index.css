@@ -1,0 +1,191 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+/*
+	font-family: 'PT Serif', serif;
+	font-family: 'PT Sans', sans-serif;
+*/
+html, body {
+	width: 100%;
+	/*min-height: 100%;*/
+	font-family: 'PT Serif', serif;
+	overflow-x: hidden;
+}
+.container {
+	max-width: 50%;
+	margin: 0 auto;
+}
+.l-row::after {
+	content: '';
+	display: block;
+	clear:both;
+}
+/* Grid system. Max column number - 8 with 12% width each*/
+[class*="grid"] {
+	width: 12.5%;
+	margin: 0 auto;
+	padding: 0 0.5%;
+	float: left;
+}
+[class*="grid"]:last-child {
+	float: right;
+}[class*="grid"]:first-child {
+	float: left;
+}
+.l-grid-2 {
+	width: 25%;
+}
+.l-grid-4 {
+	width: 50%;
+}
+.l-grid-6 {
+	width: 75%;
+}
+.l-grid-8 {
+	width: 100%;
+}
+/*End of grid system*/
+.screen {
+	min-height: 100vh;
+	min-width: 100vw;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.inviter {
+	background-image: url('./img/inviter.png');
+	background-attachment: fixed;
+}
+.say-hello {
+	background-image: url(img/second.png);
+	position: relative;
+}
+.header {
+	padding: 5vh 0;
+}
+.nav {
+	float: right;
+}
+.nav__list{
+	text-decoration: none;
+}
+.nav__list-item{
+	display: inline-block;
+	margin-right: 2rem;
+}
+.nav__list-item:last-child {
+	margin-right: 0;
+}
+.greeting {
+	padding: 20vh 0;
+}
+.greeting__header {
+	margin: 2rem auto;
+}
+.greetind__sub-headert {
+	margin-bottom: 2rem;
+}
+.btns-group__btn {
+	padding: 0 5%;
+}
+.btns-group__btn:first-child {
+	padding-left: 0%;
+}
+.btns-group__btn:last-child {
+	padding-right: 0;
+}
+.say-hello::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(255, 82, 13, 0.92);
+}
+.say-hello_l-row {
+	width: 65%;
+	margin: 0 auto;
+}
+.say-hello__legend {
+	width: 100%;
+}
+.say-hello__header {
+	font-family: var(--font-family-serif);
+	width: 100%;
+	font-size: 4rem;
+	text-align: center;
+}
+.say-hello__container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+ .say-hello__legend {
+ 	margin-bottom: 4rem;
+ }
+.say-hello__name, .say-hello__email, .say-hello__message {
+	margin-bottom: 0.5rem;
+}
+.footer {
+	background-color: var(--secondary-color);
+	padding: 3rem 0;
+}
+.footer__logo {
+	font-weight: bold;
+}
+.footer__copyright {
+	padding-top: 4rem;
+}
+.footer__btn {
+	margin: 2rem auto;
+}
+@media screen and (max-width: 1600px) {
+	.container {
+		max-width: 70%;
+	}
+}
+@media screen and (max-width: 1200px) {
+	.container {
+		width: 90%;
+	}
+	.say-hello_l-row {
+		width: 65%;
+	}
+	.l-grid-1, .l-grid-2 {
+		width: 25%;
+	}
+	.footer__btn {
+		width: 50%;
+		/*не уверен что после такого можно расчитывать на место в раю*/
+		float: none 	!important;
+		display: block;
+	}
+	
+}
+@media screen and (max-width: 1024px) {
+	.say-hello_l-row {
+		width: 90%;
+	}
+}
+@media screen and (max-width: 850px) {
+	.l-grid-6 {
+		width: 100%;
+	}
+	:root {
+		--font-size-regular: 10px;
+	}
+}
+@media screen and (max-width: 370px) {
+	.nav__list-item {
+		margin-right: 1rem;
+	}
+}
+@media screen and (max-height: 370px) {
+	.greeting {
+		padding: 10vh 0;
+	}
+}

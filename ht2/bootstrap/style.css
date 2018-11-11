@@ -1,0 +1,32 @@
+html, body {
+	height: 100%;
+}
+.wrap {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+.wrapper, .footer-wrap {
+	width: 1000px;
+	margin: 0 auto;
+}
+.wrapper {
+	flex: 1 0 auto;
+}
+.footer {
+	flex: 0 1 auto;
+}
+.sidebar, .main {
+	padding: 2rem 1rem;
+}
+.copyrights {
+	margin: 1rem 0;
+}
+.header__logo {
+	display: block;
+	height: 40px;
+}
+.debian {
+	width: 25px;
+	height: 25px;
+}
