@@ -12,12 +12,14 @@
 	--primary-paragraph-color: #222;
 	--hovered-link: #b0b0b0;
 	--border-raduis: 3px;
-	--default-selec-border-color: #ddd;
+	--default-border-color: #ddd;
 	--active-select-border-color: #55acee;
 	--default-btn-txt-color: #fff;
-	--input-border-color: #ddd;
 	--input-placeholder-color: #7c8495;
 	--label-txt-color: #7c8495;
+	--step-txt-color: #ddd;
+	--primary-step-txt-color: #fff;
+	--modal-plain-txt-color: #fff;
 }
 * {
 	margin: 0;
@@ -78,7 +80,7 @@ html, body {
 	color: var(--secondary-color);
 	font-family: var(--font-family-regular);
 	font-weight: bold;
-	border: solid 1px var(--default-selec-border-color);
+	border: solid 1px var(--default-border-color);
 	outline: none;
 	border-radius: var(--border-raduis);
 	-webkit-appearance: none;
@@ -111,7 +113,7 @@ html, body {
 	background-image: url(img/svg/caret-up.svg);
 }
 .c-select:disabled, .c-select:disabled:hover {
-	border-color: var(--default-selec-border-color);
+	border-color: var(--default-border-color);
 }
 .c-b-crumbs > li {
 	display: inline-block;
@@ -192,7 +194,7 @@ input[type="radio"], input[type="checkbox"] {
 	height: 1rem;
 	background-color: var(--light-color);
 	border-radius: 2px;
-	border: 1px solid var(--input-border-color);
+	border: 1px solid var(--default-border-color);
 }
 .c-radio::before {
 	border-radius: 50%;
@@ -242,7 +244,7 @@ input[type="checkbox"]:disabled  + .c-checkbox::before, input[type="checkbox"]:d
 	width: 18px;
 	height: 18px;
 	border-radius: 50%;
-	border: 1px solid var(--input-border-color);
+	border: 1px solid var(--default-border-color);
 	background-color: var(--light-color);
 	left: 0;
 	bottom: 0;
@@ -260,7 +262,7 @@ input[type="checkbox"]:checked + .c-toggler__btn::before {
 }
 /* INPUT 
 Сломал глаза, но так и не увидел, почему не работает ::placeholder, походу тайпа где-то :< */
-.label {
+.c-label {
 	width: 100%;
 	position: relative;
 	display: inline-block;
@@ -268,12 +270,12 @@ input[type="checkbox"]:checked + .c-toggler__btn::before {
 	font-weight: bold;
 	color: var(--label-txt-color);
 }
-.input {
+.c-input {
 	width: 100%;
 	display:inline-block;
 	background-color: none;
 	border-radius: 3px;
-	border: 1px solid var(--input-border-color);
+	border: 1px solid var(--default-border-color);
 	padding: 1rem;
 	box-sizing: border-box;
 	outline: none;
@@ -282,26 +284,26 @@ input[type="checkbox"]:checked + .c-toggler__btn::before {
 	font-size: 1rem;
 	color: var(--secondary-color);
 }
-.input:focus {
+.c-input:focus {
 	border-color: var(--primary-color);
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.09);
 }
-.input::placeholder, .input::-webkit-input-placeholder, .input::-ms-input-placeholder {
+.c-input::placeholder, .input::-webkit-input-placeholder, .input::-ms-input-placeholder {
 	opacity: 1;
 	color: var(--input-placeholder-color);
 	font-family: var(--font-family-regular);
 	font-weight: normal;
 }
-.input:focus::placeholder, .input:focus::-webkit-input-placeholder, .input:focus::-ms-input-placeholder {
+.c-input:focus::placeholder, .input:focus::-webkit-input-placeholder, .input:focus::-ms-input-placeholder {
 	color: transparent;
 }
-.input:disabled {
+.c-input:disabled {
 	opacity: 0.5;
 	cursor: not-allowed;
 }
-.input-checker {
+.c-input-checker {
 }
-.input + .input-checker::before {
+.c-input + .input-checker::before {
 	content: '';
 	position: absolute;
 	top: 50%;
@@ -310,19 +312,19 @@ input[type="checkbox"]:checked + .c-toggler__btn::before {
 	background-position: center;
 	background-repeat: no-repeat;
 }
-.input_valid-input + .input-checker::before {
+.c-input_valid-input + .input-checker::before {
 	width: 12px;
 	height: 12px;
 	background-image: url(img/icon-input-valid.svg);
 }
-.input_invalid-input {
+.c-input_invalid-input {
 	color: var(--error-color);
 }
-.input_invalid-input + .input-checker::before {
+.c-input_invalid-input + .input-checker::before {
 	content: '?';
 	color: var(--error-color);
 }
-.input_invalid-input + .input-checker::after {
+.c-input_invalid-input + .input-checker::after {
 	position: absolute;
 	content: attr(data-error);
 	bottom: -20px;
@@ -333,16 +335,16 @@ input[type="checkbox"]:checked + .c-toggler__btn::before {
 	font-size: .7rem;
 }
 /*Search*/
-.search-field {
+.c-search-field {
 	width:100%;
 	position: relative;
 	display:inline-block;
 }
-.search-field::before {
+.c-search-field::before {
 	content: '';
 	position:absolute;
-	width: 14px;
-	height: 13px;
+	width: 16px;
+	height: 16px;
 	top: 50%;
 	left: 1.5rem;
 	transform: translate(-50%, -50%);
@@ -350,36 +352,149 @@ input[type="checkbox"]:checked + .c-toggler__btn::before {
 	background-repeat: no-repeat;
 	background-size: 100%;
 }
-
-.search {
+.c-search {
 	padding-left: 42px;
 }
-
-
-
-
-/*
-.i-bascet-svg {
+.c-step {
+	display: inline-block;
+	text-transform: uppercase;
+	list-style-type: none;
+	list-style-position: inside;
+}
+.c-step::before {
+	width: 30px;
+	height: 30px;
+	content: attr(data-step);
+	display: inline-block;
+	color: var(--step-txt-color);
+	text-align: center;
 	vertical-align: middle;
-	width: 2rem;
-	height: 2rem;
-	stroke: var(--default-btn-txt-color);
+	box-sizing: border-box;
+	border-radius: 50%;
+	border: 1px solid var(--default-border-color);
 }
-
-.i-bascet-svg:hover {
-	stroke: var(--secondary-color);
+.c-step_active {
+	font-weight:bold;
 }
-*/
-/*.-icon-btn::after {
+.c-step_primary::before {
+	border: 0;
+	color: var(--primary-step-txt-color);
+	background-color: var(--primary-color);
+}
+.c-step_success::before {
+	content: '';
+	border: 0;
+	background-color: var(--success-color);
+	background-image: url(img/icon-thick-check.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 50%;
+}
+.o-modal {
+	position: relative;
+	background-color: var(--light-color);
+	padding: 6.5rem 11rem ;
+	border: 1px solid var(--default-border-color);
+}
+.o-modal:hover::after {
+	content:'';
+	position: absolute;
+	width: 12px;
+	height: 12px;
+	top: 20px;
+	right: 22px;
+	background-image: url(img/icon-close.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.o-modal_theme_notifier {
+	border: 0;
+	border-bottom: 2px solid var(--primary-color);
+	box-shadow: 0 4px 5px 0 rgba(0,0,0,.11);
+}
+.o-modal_theme_small {
+	padding: .5rem;
+	padding-left: 3.75rem;
+}
+.o-modal_theme_small::before {
 	content: '';
 	display: block;
 	position: absolute;
-	background-image: url(img/icon-basket.svg);
-	background-size: 100%;
+	top: 50%;
+	left: .8rem;
+	transform: translateY(-50%);
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+	border: 1px solid var(--primary-color);
+}
+.o-modal_theme_error, .o-modal_theme_error::before {
+	border-color: var(--error-color);
+}
+.o-modal_theme_error::before {
+	content: '?';
+	text-align: center;
+	color: var(--error-color);
+}
+.o-modal_theme_warning, .o-modal_theme_warning::before {
+	border-color: var(--warning-color);
+}
+.o-modal_theme_warning::before {
+	content: '!';
+	text-align: center;
+	color: var(--warning-color);
+}
+.o-modal_theme_success, .o-modal_theme_success::before {
+	border-color: var(--success-color);
+}
+.o-modal_theme_success::before {
+	background-image: url(img/icon-modal-success.svg);
 	background-repeat: no-repeat;
 	background-position: center;
-	width: 1rem;
-	height:1rem;
-	top: 0;
-	right: 0;
-}*/
+	background-size: 50%;
+}
+.c-modal-message {
+	text-align: center;
+	color: var(--secondary-color);
+	font-size: .7rem;
+}
+.c-modal-message::before {
+	display:block;
+	content: '';
+	margin: 0 auto;
+	width: 5rem;
+	height: 5rem;
+	box-sizing: border-box;
+	border: 2px solid var(--primary-color);
+	border-radius: 50%;
+	background-image: url(img/icon-modal-success.svg);
+	background-repeat: no-repeat;
+	background-size: 60%;
+	background-position: center;
+}
+.c-modal-message_theme_small {
+	text-align: left;
+}
+.c-modal-message_theme_small::before {
+	display: none;
+}
+.o-modal_theme_plaine-txt{
+	color: var(--modal-plain-txt-color);
+	padding: 5px 1rem;
+	padding-right: 2.25rem;
+	border:0;
+}
+.o-modal_theme_plaine-txt:hover::after {
+	background-image: url(img/icon-close_white.svg);
+	top: .75rem;
+	right: .75rem;
+}
+.o-modal_theme_plaine-txt-error {
+	background-color: var(--error-color);
+}
+.o-modal_theme_plaine-txt-warning {
+	background-color: var(--warning-color);
+}
+.o-modal_theme_plaine-txt-success {
+	background-color: var(--success-color);
+}
