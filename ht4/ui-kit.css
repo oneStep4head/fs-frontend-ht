@@ -425,6 +425,7 @@ input[type="checkbox"]:checked + .c-toggler__btn::before {
 	transform: translateY(-50%);
 	width: 2rem;
 	height: 2rem;
+	font-weight: bold;
 	border-radius: 50%;
 	border: 1px solid var(--primary-color);
 }
