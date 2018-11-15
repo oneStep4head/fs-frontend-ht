@@ -14,13 +14,13 @@ window.onload = function () {
 		for (let i = 0; i < 6; i++) {
 			rndColor += letters[randomInt(0, 14)];
 		}
-		console.log(rndColor);
+		// console.log(rndColor);
 		return rndColor;
 	}
 	
 	function getRndElem() {
 		rndElem = cells[randomInt(0, cells.length - 1)];
-		console.log(rndElem);
+		// console.log(rndElem);
 		return rndElem;
 	}
 	
@@ -48,5 +48,9 @@ window.onload = function () {
 		let unColorTimer = setInterval (unHighLightRndCell, 2000);
 	}
 	
+	let hlTimerID = setInterval(highLightRndCell, 2000);
+	let unHlTimerID = setTimeout (function() {
+		setInterval(unHighLightRndCell, 2000);
+	},2000);
 	// itsPartyTime();
 }
