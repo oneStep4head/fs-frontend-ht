@@ -301,9 +301,7 @@ input[type="checkbox"]:checked + .c-toggler__btn::before {
 	opacity: 0.5;
 	cursor: not-allowed;
 }
-.c-input-checker {
-}
-.c-input + .input-checker::before {
+.c-input + .c-input-checker::before {
 	content: '';
 	position: absolute;
 	top: 50%;
@@ -312,7 +310,7 @@ input[type="checkbox"]:checked + .c-toggler__btn::before {
 	background-position: center;
 	background-repeat: no-repeat;
 }
-.c-input_valid-input + .input-checker::before {
+.c-input_valid-input + .c-input-checker::before {
 	width: 12px;
 	height: 12px;
 	background-image: url(img/icon-input-valid.svg);
@@ -320,11 +318,11 @@ input[type="checkbox"]:checked + .c-toggler__btn::before {
 .c-input_invalid-input {
 	color: var(--error-color);
 }
-.c-input_invalid-input + .input-checker::before {
+.c-input_invalid-input + .c-input-checker::before {
 	content: '?';
 	color: var(--error-color);
 }
-.c-input_invalid-input + .input-checker::after {
+.c-input_invalid-input + .c-input-checker::after {
 	position: absolute;
 	content: attr(data-error);
 	bottom: -20px;
