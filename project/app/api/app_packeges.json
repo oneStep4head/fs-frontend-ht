@@ -1,0 +1,23 @@
+[
+	{
+		"imgURL":"assets/apps/app-1.png",
+		"id": 2,
+		"title":"СТАНДАРТНЫЙ ПАКЕТ",
+		"lastUpdate": 1489284799104,
+		"guid":"5b633ab5"
+	},
+	{
+		"imgURL":"assets/apps/app-2.png",
+		"id": 1,
+		"title":"НОВЫЙ ЦФТ-БАНК",
+		"lastUpdate": 1489195793649,
+		"guid":"e607e5c1"
+	},
+	{
+		"imgURL":"assets/apps/app-3.png",
+		"id": 1,
+		"title":"КАТАЛОГ РАЗРАБОТОК",
+		"lastUpdate": 1489195758631,
+		"guid":"e607e5c1"
+	}
+]

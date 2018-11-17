@@ -1,21 +1,22 @@
 window.onload = function() {
-	var apps = [
-					{
-						'imgURL':'assets/images/shot-1.jpg',
-						'title':'СТАНДАРТНЫЙ ПАКЕТ',
-						'timestamp':'08 апреля 2012'
-					},
-					{
-						'imgURL':'assets/images/shot-2.jpg',
-						'title':'НОВЫЙ ЦФТ-БАНК',
-						'timestamp':'09 сентября 2016'
-					},
-					{
-						'imgURL':'assets/images/shot-3.jpg',
-						'title':'КАТАЛОГ РАЗРАБОТОК',
-						'timestamp':'03 марта 2015'
-					}
-				];
+	var apps; 
+	// = [
+	// 				{
+	// 					'imgURL':'assets/images/shot-1.jpg',
+	// 					'title':'СТАНДАРТНЫЙ ПАКЕТ',
+	// 					'timestamp':'08 апреля 2012'
+	// 				},
+	// 				{
+	// 					'imgURL':'assets/images/shot-2.jpg',
+	// 					'title':'НОВЫЙ ЦФТ-БАНК',
+	// 					'timestamp':'09 сентября 2016'
+	// 				},
+	// 				{
+	// 					'imgURL':'assets/images/shot-3.jpg',
+	// 					'title':'КАТАЛОГ РАЗРАБОТОК',
+	// 					'timestamp':'03 марта 2015'
+	// 				}
+	// 			];
 	
 	function getApps() {
 		return apps;
