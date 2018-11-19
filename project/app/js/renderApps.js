@@ -19,23 +19,22 @@ window.onload = function() {
 	// 			];
 	
 	function getApps() {
-		let xhr = new XMLHttpRequest();
-		let apps;
-		xhr.open('GET', '/api/app_packeges.json', true);
-		xhr.send();
-		
-		xhr.onload = function(e) {
-			if(xhr.status != 200) {
-				console.log('Upss.. Something went wrong while loading data from server :<');
-				console.log('Status Txt: ' + xhr.statusText);
-				return xhr.status;
-			}
-			apps = JSON.parse(xhr.responseText);
-			console.log('getted apps:\n');
-			console.log(apps);
+		return new Promise(function(resolve, reject){
+			let xhr = new XMLHttpRequest();
+			xhr.open('GET', '/api/app_packeges.json', true);
+			xhr.responseType = 'json';
+			xhr.send();
 			
-		}
-		return apps;
+			xhr.onload = function(e) {
+				if(xhr.status != 200) {
+					reject(() => {
+						console.log(new Error('Upss.. Something went wrong. Error text:\n' + xhr.statusText));
+					});
+				} else {
+					resolve(xhr.response);
+				}
+			}
+		});
 	}
 	
 	function rndInt(min, max) {
@@ -44,21 +43,40 @@ window.onload = function() {
     	return rand;
 	}
 
-	function renderApps() {
-		let apps = getApps();
+	function renderApps(apps) {
+		console.log('Starts to render apps...');
+		console.log(apps);
 		
 		var appsWrapper = document.querySelector('.apps-slider__row');
 		var appTemplate = document.querySelector('.app-template');
 
-		appsWrapper.appendChild(appTemplate.content.cloneNode(true));
-		
-		let appLink = document.querySelectorAll('.app:last-child > .app__link');
-		for (let j=0; j<appLink.length; j++) {
-			let tmpHref = 'app.html?' + apps[0]["guid"];
-			appLink[j].setAttribute('href', tmpHref);
-		}
-		
+		for(let i=0; i<apps.length; i++){
+			appsWrapper.appendChild(appTemplate.content.cloneNode(true));
+			let appLinks, appDate, appImg, appName;
+			console.log('переменные объявлены, итерация №' + i);
+			
+			
+			appLinks = document.querySelectorAll('.app:last-child > .app__link');
+			for (let j=0; j<appLinks.length; j++) {
+				appLinks[j].setAttribute('href', 'app.html?' + apps[i]["guid"]);
+			}
+			appDate = document.querySelector('.app:last-child > .app__date');
+			appDate.innerHTML = new Date(apps[i]["lastUpdate"]).toLocaleString('ru',
+				{
+					year: 'numeric',
+					month: 'long',
+					day: 'numeric'
+				});
 
+			appImg = document.querySelector('.app:last-child > .app__link > .app__img');
+			appImg.setAttribute('src', apps[i]["imgURL"]);
+
+			appName = document.querySelector('.app:last-child > .app__link > .app__name');
+			appName.innerHTML = apps[i]["title"];
+		}
+
+
+			
 		// for(let i = 0; i < apps.length; i++) {
 		// 	let rndApp = rndInt(0, apps.length-1);
 			
@@ -83,5 +101,6 @@ window.onload = function() {
 
 		// 	appsWrapper.appendChild(appWrapper);
 	}
-	renderApps();
+	getApps()
+		.then(renderApps);
 }
