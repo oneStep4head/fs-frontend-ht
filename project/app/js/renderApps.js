@@ -51,56 +51,38 @@ window.onload = function() {
 		var appTemplate = document.querySelector('.app-template');
 
 		for(let i=0; i<apps.length; i++){
-			appsWrapper.appendChild(appTemplate.content.cloneNode(true));
-			let appLinks, appDate, appImg, appName;
 			console.log('переменные объявлены, итерация №' + i);
+			console.log(apps[i]["imgURL"]);
+			console.log(apps[i]["title"]);
+			console.log(apps[i]["lastUpdate"]);
+			console.log(apps[i]["guid"]);
 			
-			
-			appLinks = document.querySelectorAll('.app:last-child > .app__link');
+			let appLinks = appTemplate.content.querySelectorAll('.app__link');
 			for (let j=0; j<appLinks.length; j++) {
+				console.log(appLinks[j]);
+				
 				appLinks[j].setAttribute('href', 'app.html?' + apps[i]["guid"]);
 			}
-			appDate = document.querySelector('.app:last-child > .app__date');
-			appDate.innerHTML = new Date(apps[i]["lastUpdate"]).toLocaleString('ru',
-				{
-					year: 'numeric',
-					month: 'long',
-					day: 'numeric'
-				});
+			let appDate = appTemplate.content.querySelector('.app__date');
+			console.log(appDate);
+			
+			// appDate.innerHTML = new Date(apps[i]["lastUpdate"]).toLocaleString('ru',
+			// 	{
+			// 		year: 'numeric',
+			// 		month: 'long',
+			// 		day: 'numeric'
+			// 	});
 
-			appImg = document.querySelector('.app:last-child > .app__link > .app__img');
+			let appImg = appTemplate.content.querySelector('.app__img');
 			appImg.setAttribute('src', apps[i]["imgURL"]);
 
-			appName = document.querySelector('.app:last-child > .app__link > .app__name');
+			let appName = appTemplate.content.querySelector('.app__name');
 			appName.innerHTML = apps[i]["title"];
+
+			appsWrapper.appendChild(appTemplate.content.cloneNode(true));
 		}
-
-
-			
-		// for(let i = 0; i < apps.length; i++) {
-		// 	let rndApp = rndInt(0, apps.length-1);
-			
-		// 	let appWrapper = document.createElement('DIV');
-		// 	appWrapper.className = 'o-main__pocket l-grid-4';
-
-		// 	let appImg = document.createElement('A');
-		// 	appImg.className = 'o-main__pocket-img';
-		// 	appImg.style.backgroundImage = `url(${apps[rndApp]['imgURL']})`;
-
-		// 	let appTitle = document.createElement('H4');
-		// 	appTitle.className = 'o-main__pocket-title';
-		// 	appTitle.innerHTML = apps[rndApp]['title'];
-
-		// 	let appDate = document.createElement('TIME');
-		// 	appDate.className = 'o-main__pocket-date';
-		// 	appDate.innerHTML = apps[rndApp]['timestamp'];
-
-		// 	appWrapper.appendChild(appImg);
-		// 	appWrapper.appendChild(appTitle);
-		// 	appWrapper.appendChild(appDate);
-
-		// 	appsWrapper.appendChild(appWrapper);
 	}
 	getApps()
-		.then(renderApps);
+		.then(renderApps)
+		.catch(err => console.error(err));
 }
