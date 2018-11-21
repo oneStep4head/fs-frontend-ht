@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="css/ui-kit.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<script src="js/renderApps.js"></script>
+	<script src="js/carousel.js"></script>
 	<title>Каталог Приложений</title>
 </head>
 <body>
@@ -46,35 +47,10 @@
 						<hr>
 					</header>
 					<div class="apps-slider">
+						<button class="slider-btn slider-btn_prev"></button>
 						<div class="l-row apps-slider__row">
-							<template class="app-template">
-								<div class="l-grid_1-3 apps__item">
-									<figure class="app">
-										<a href="#" class="c-link app__link">
-											<img class="app__img" src="" alt="App Logo" title="App logo">
-										</a>
-										<a href="#" class="c-link app__link">
-											<figcaption class="app__name"></figcaption>
-										</a>
-										<time class="app__date"></time>
-									</figure>
-								</div>
-							</template>
-							<!-- <div class="l-grid_1-3 apps__item">
-									<figure class="app">
-										<a href="#" class="c-link"><img class="app__img" src="./assets/apps/app-1.png" alt="App Logo" title="App logo"></a>
-										<a href="#" class="c-link"><figcaption class="app__name">СТАНДАРТНЫЙ ПАКЕТ</figcaption></a>
-										<time class="app__date">08 впреля 2012</time>
-									</figure>
-							</div>
-							<div class="l-grid_1-3 apps__item">
-									<figure class="app">
-										<a href="#" class="c-link"><img class="app__img" src="./assets/apps/app-1.png" alt="App Logo" title="App logo"></a>
-										<a href="#" class="c-link"><figcaption class="app__name">СТАНДАРТНЫЙ ПАКЕТ</figcaption></a>
-										<time class="app__date">08 впреля 2012</time>
-									</figure>
-							</div> -->
 						</div>
+						<button class="slider-btn slider-btn_next"></button>
 					</div>
 				</section>
 				<section class="app-categories">
@@ -121,5 +97,18 @@
 			</div>
 		</main>
 	</div>
+	<template class="app-template">
+		<div class="l-grid_1-3 apps__item">
+			<figure class="app">
+				<a href="#" class="c-link app__link">
+					<img class="app__img" src="" alt="App Logo" title="App logo">
+				</a>
+				<a href="#" class="c-link app__link">
+					<figcaption class="app__name"></figcaption>
+				</a>
+				<time class="app__date"></time>
+			</figure>
+		</div>
+	</template>
 </body>
 </html>

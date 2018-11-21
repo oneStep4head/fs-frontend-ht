@@ -1,23 +1,4 @@
 window.onload = function() {
-	// var apps; 
-	// = [
-	// 				{
-	// 					'imgURL':'assets/images/shot-1.jpg',
-	// 					'title':'СТАНДАРТНЫЙ ПАКЕТ',
-	// 					'timestamp':'08 апреля 2012'
-	// 				},
-	// 				{
-	// 					'imgURL':'assets/images/shot-2.jpg',
-	// 					'title':'НОВЫЙ ЦФТ-БАНК',
-	// 					'timestamp':'09 сентября 2016'
-	// 				},
-	// 				{
-	// 					'imgURL':'assets/images/shot-3.jpg',
-	// 					'title':'КАТАЛОГ РАЗРАБОТОК',
-	// 					'timestamp':'03 марта 2015'
-	// 				}
-	// 			];
-	
 	function getApps() {
 		return new Promise(function(resolve, reject){
 			let xhr = new XMLHttpRequest();
@@ -64,17 +45,16 @@ window.onload = function() {
 				appLinks[j].setAttribute('href', 'app.html?' + apps[i]["guid"]);
 			}
 			let appDate = appTemplate.content.querySelector('.app__date');
-			console.log(appDate);
-			
-			// appDate.innerHTML = new Date(apps[i]["lastUpdate"]).toLocaleString('ru',
-			// 	{
-			// 		year: 'numeric',
-			// 		month: 'long',
-			// 		day: 'numeric'
-			// 	});
+			appDate.innerHTML = new Date(apps[i]["lastUpdate"]).toLocaleString('ru',
+				{
+					year: 'numeric',
+					month: 'long',
+					day: 'numeric'
+				});
 
 			let appImg = appTemplate.content.querySelector('.app__img');
-			appImg.setAttribute('src', apps[i]["imgURL"]);
+			// appImg.setAttribute('src', apps[i]["imgURL"]);
+			appImg.style.backgroundImage = `url(${apps[i]["imgURL"]})`;
 
 			let appName = appTemplate.content.querySelector('.app__name');
 			appName.innerHTML = apps[i]["title"];
