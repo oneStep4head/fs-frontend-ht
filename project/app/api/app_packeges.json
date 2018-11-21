@@ -18,6 +18,34 @@
 		"id": 1,
 		"title":"КАТАЛОГ РАЗРАБОТОК",
 		"lastUpdate": 1489195758631,
-		"guid":"e607e5c1"
+		"guid":"e6074b63"
+	},
+	{
+		"imgURL":"assets/apps/app-4.png",
+		"id": 1,
+		"title":"ПЕТЯ УЖЕ НЕ ТОТ",
+		"lastUpdate": 1489195758631,
+		"guid":"j73jlas5"
+	},
+	{
+		"imgURL":"assets/apps/app-5.png",
+		"id": 1,
+		"title":"ДРУГ ЕЖИКА",
+		"lastUpdate": 1489195758631,
+		"guid":"1c5e706e"
+	},
+	{
+		"imgURL":"assets/apps/app-6.png",
+		"id": 1,
+		"title":"ЧЕРЕПАХА ПИЦЦУ ПОЕДАКА",
+		"lastUpdate": 1489195758631,
+		"guid":"2d9a"
+	},
+	{
+		"imgURL":"assets/apps/app-7.png",
+		"id": 1,
+		"title":"СПЕШИТЕЛИ ПОМОГАТЕЛИ",
+		"lastUpdate": 1489195758631,
+		"guid":"4e10"
 	}
 ]
