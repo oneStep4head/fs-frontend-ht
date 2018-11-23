@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="css/ui-kit.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<script type="module" src="js/renderApps.js"></script>
-	<script type="module" src="js/carousel.js"></script>
+	<script type="module" src="js/Carousel.js"></script>
 	<script type="module" src="js/index.js"></script>
 	<title>Каталог Приложений</title>
 </head>
@@ -47,11 +47,12 @@
 						</div>
 						<hr>
 					</header>
-					<div class="apps-slider">
-						<button class="slider-btn slider-btn_prev"></button>
-						<div class="l-row apps-slider__row">
+					<div class="apps-carousel">
+						<button class="carousel-btn carousel-btn_prev"></button>
+						<div class="l-row apps-carousel__row">
 						</div>
-						<button class="slider-btn slider-btn_next"></button>
+						<button class="carousel-btn carousel-btn_next"></button>
+						<div class="apps-carousel__pointers-row"></div>
 					</div>
 				</section>
 				<section class="app-categories">
@@ -110,6 +111,9 @@
 				<time class="app__date"></time>
 			</figure>
 		</div>
+	</template>
+	<template class="carousel-point-template">
+		<button class="carousel-point"></button>
 	</template>
 </body>
 </html>

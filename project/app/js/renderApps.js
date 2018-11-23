@@ -19,31 +19,28 @@ function getApps() {
 }
 
 function rndInt(min, max) {
-	var rand = min + Math.random() * (max + 1 - min);
+	let rand = min + Math.random() * (max + 1 - min);
 	rand = Math.floor(rand);
 	return rand;
 }
 
 function renderApps(apps) {
 	console.log('Starts to render apps...');
-	console.log(apps);
+	let firstAppItem, lastAppItem;
 
-	var appsWrapper = document.querySelector('.apps-slider__row');
-	var appTemplate = document.querySelector('.app-template');
+	let appsWrapper = document.querySelector('.apps-carousel__row');
+	let appTemplate = document.querySelector('.app-template');
+
+	let appsPointersWrapper = document.querySelector('.apps-carousel__pointers-row');
+	let appPointerTemplate = document.querySelector('.carousel-point-template');
 
 	for (let i = 0; i < apps.length; i++) {
-		// TODO apps[i]
+		// TODO apps[i]=app
 		let app = apps[i];
-		console.log('переменные объявлены, итерация №' + i);
-		console.log(app.imgURL);
-		console.log(app.title);
-		console.log(app.lastUpdate);
-		console.log(app.guid);
+		console.log('в цикле заполняем шаблон и аппендим в DOM, итерация №' + i);
 
 		let appLinks = appTemplate.content.querySelectorAll('.app__link');
 		for (let j = 0; j < appLinks.length; j++) {
-			console.log(appLinks[j]);
-
 			appLinks[j].setAttribute('href', 'app.html?' + app.guid);
 		}
 		let appDate = appTemplate.content.querySelector('.app__date');
@@ -60,6 +57,18 @@ function renderApps(apps) {
 		let appName = appTemplate.content.querySelector('.app__name');
 		appName.innerHTML = app.title;
 
+
+		if (i == 0) { firstAppItem = appTemplate.content.cloneNode(true); }
+		if (i == apps.length - 1) { lastAppItem = appTemplate.content.cloneNode(true); }
+
+		appPointerTemplate.content.querySelector('.carousel-point').setAttribute('data-carousel-position', i);
+
 		appsWrapper.appendChild(appTemplate.content.cloneNode(true));
+		appsPointersWrapper.appendChild(appPointerTemplate.content.cloneNode(true));
 	}
+	// this 2 elements added in row for more beauty slider look
+	//Yep, I'm not so smart. But if u'r - feel free to tell me your thoughts.
+	appsWrapper.appendChild(firstAppItem);
+	appsWrapper.insertBefore(lastAppItem, appsWrapper.firstChild);
+
 }
