@@ -1,11 +1,11 @@
 :root {
 	--nav-item-color: #adafb2;
-	--active-nav-item-color: #ed1b2f;
 	--box-shadow-color: #d1d1d1;
 	--hr-color:#d8d8d8;
 	--app-subtxt-color: #adafb2;
-	--hover-app-item-color: #ed1b2f;
-	--active-carousel-pointer-color: #ed1b2f;
+	--app-nav-txt-color: #79878e;
+	--activ-item-color: #ed1b2f;
+	--app-nav-txt-color: #79878e;
 }
 
 .wrapper {
@@ -75,12 +75,12 @@ body {
 	color: var(--nav-item-color);
 }
 .nav__link_active {
-	color: var(--active-nav-item-color);
+	color: var(--activ-item-color);
 }
 .nav__link:hover {
-	color: var(--active-nav-item-color);
+	color: var(--activ-item-color);
 }
-.main {
+.content {
 	margin-top: 3rem;
 	margin-bottom: 6rem;
 	background-color: white;
@@ -184,7 +184,7 @@ hr {
 }
 .carousel-point:active, .carousel-point_active {
 	opacity: 1;
-	background-color: var(--active-carousel-pointer-color);
+	background-color: var(--activ-item-color);
 }
 .apps-carousel__row {
 	font-size: 0;
@@ -272,9 +272,26 @@ hr {
 	font-family: Arial, sans-serif;
 }
 .app-category__item:hover::after{
-	color: var(--hover-app-item-color);
+	color: var(--activ-item-color);
 }
 .app-category__link {
 	font-size: 1.25rem;
 	font-weight: normal;
+}
+.app-nav {
+	padding: 1.5rem;
+}
+.app-details {
+	margin-left: 1.5rem;
+	padding: 1.5rem 2rem;
+}
+.app-nav__app-list {
+	color: var(--app-nav-txt-color);
+	list-style-position: inside;
+}
+.app-nav__link {
+	color: var(--app-nav-txt-color);
+}
+.app-nav__link:active, .app-nav__link_active {
+	color: var(--activ-item-color);
 }
