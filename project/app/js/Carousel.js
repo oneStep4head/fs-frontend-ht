@@ -19,8 +19,8 @@ function Carousel(setting) {
 	};
 
 	privates.opt = {
-		"position": 1 ,
-		"minPosition": 1,
+		"position": 0 ,
+		"minPosition": 0,
 		// (-2) is becous of 2 fake app slide in end of the slides row.
 		"maxPosition": document.querySelector(privates.setting.wrap).children.length - 1 - 2,
 		"slideWidth": getSlideWidth(document.querySelector(privates.setting.slide))
@@ -60,7 +60,7 @@ function Carousel(setting) {
 			privates.sel.wrap.classList.remove('apps-carousel__row_no-animation');
 			hlPoint(privates.opt.position);
 			privates.sel.wrap.style["transform"] = `translateX(-${privates.opt.position * privates.opt.slideWidth}px)`;
-		}, 1);
+		}, 50);
 	};
 	// Next slide
 	function nextSlide() {
@@ -69,8 +69,8 @@ function Carousel(setting) {
 
 		if (privates.opt.position > privates.opt.maxPosition) {
 			privates.sel.wrap.classList.add('apps-carousel__row_no-animation');
-			privates.opt.position = 0;
-			privates.sel.wrap.style["transform"] = `translateX(-${privates.opt.position * privates.opt.slideWidth}px)`;
+			privates.opt.position = privates.opt.minPosition - 1;
+			privates.sel.wrap.style["transform"] = `translateX(${(-1)*privates.opt.position * privates.opt.slideWidth}px)`;
 
 			privates.opt.position = privates.opt.minPosition;
 		}
@@ -78,8 +78,8 @@ function Carousel(setting) {
 		setTimeout(function() {
 			privates.sel.wrap.classList.remove('apps-carousel__row_no-animation');
 			hlPoint(privates.opt.position);
-			privates.sel.wrap.style["transform"] = `translateX(-${privates.opt.position * privates.opt.slideWidth}px)`;
-		}, 1);
+			privates.sel.wrap.style["transform"] = `translateX(${(-1)*privates.opt.position * privates.opt.slideWidth}px)`;
+		}, 50);
 	};
 	// Go To Slide 
 	function goToSlide(e) {

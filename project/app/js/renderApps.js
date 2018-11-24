@@ -52,7 +52,7 @@ function renderApps(apps) {
 			});
 
 		let appImg = appTemplate.content.querySelector('.app__img');
-		appImg.style.backgroundImage = `url(${app.imgURL})`;
+		appImg.setAttribute('src',`${app.imgURL}`);
 
 		let appName = appTemplate.content.querySelector('.app__name');
 		appName.innerHTML = app.title;

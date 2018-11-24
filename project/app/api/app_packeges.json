@@ -23,14 +23,14 @@
 	{
 		"imgURL":"assets/apps/app-4.png",
 		"id": 1,
-		"title":"ПЕТЯ УЖЕ НЕ ТОТ",
+		"title":"ПЁТР УЖЕ НЕ ТОТ",
 		"lastUpdate": 1489195758631,
 		"guid":"j73jlas5"
 	},
 	{
 		"imgURL":"assets/apps/app-5.png",
 		"id": 1,
-		"title":"ДРУГ ЕЖИКА",
+		"title":"Strutting Leo",
 		"lastUpdate": 1489195758631,
 		"guid":"1c5e706e"
 	},
@@ -44,7 +44,7 @@
 	{
 		"imgURL":"assets/apps/app-7.png",
 		"id": 1,
-		"title":"СПЕШИТЕЛИ ПОМОГАТЕЛИ",
+		"title":"ТАЙЛЕР ДЁРДЕН И ЕГО ДРУГ",
 		"lastUpdate": 1489195758631,
 		"guid":"4e10"
 	}
