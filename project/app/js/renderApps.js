@@ -1,4 +1,4 @@
-export { getApps, renderCarouselApps, renderAppsList };
+export { getApps, renderCarouselApps, renderAppsList, renderAppDetails };
 import {getUrlParams} from "/js/utils.js";
 
 function getApps(file) {
@@ -75,13 +75,13 @@ function renderCarouselApps(apps) {
 
 }
 
-function renderAppsList() {
-	getApps()
+function renderAppsList(list) {
+	getApps(list)
 		.then(function (apps) {
 			let appNavItemTmplt = document.querySelector('.app-nav__app-item-template');
 			let appNavItemWrap = document.querySelector('.app-nav__app-list');
 			
-			//Filthy way to aquilize the aside height and the main height 
+			//Filthy way to equilize the aside height and the main height 
 			document.querySelector('.app-nav.content').style.minHeight = 
 			getComputedStyle(document.querySelector('.app-desc.content')).height;
 
@@ -100,14 +100,21 @@ function renderAppsList() {
 
 function renderAppDetails() {
 	let appGUID = getUrlParams(window.location.search).app;
-	appGUID += '.json';
+	let appDesc = appGUID + '.json';
 
-	getApps(appGUID)
+	getApps(appDesc)
 		.then(function(app){
-			let appDescTmplt = document.querySelector('.app-desc-template');
+			let appDescTmplt = document.querySelector('.app-desc-template').content;
 			let appDescWrap = document.querySelector('.app-desc.content');
 
+			appDescTmplt.querySelector('.app-title__title').innerHTML = app.title;
+			appDescTmplt.querySelector('.app-details__logo')
+			.setAttribute('src', app.imgURL);
 
+			appDescTmplt.querySelector('.app-details__btn').setAttribute('data-app-guid', app.guid);
+			appDescTmplt.querySelector('.app__date').innerHTML = app.lastUpdate;
+			appDescTmplt.querySelector('.app-info__license').innerHTML = app.licenseInfo;
+			
 		})
 		.catch(function(error) {console.warn('Somethind goes wrong' + error)});
 }

@@ -1,5 +1,6 @@
-import {renderAppsList} from "/js/renderApps.js";
+import {renderAppsList, renderAppDetails} from "/js/renderApps.js";
 
 window.onload = function() {
-	renderAppsList();
+	renderAppsList('app_packages.json');
+	renderAppDetails();
 }

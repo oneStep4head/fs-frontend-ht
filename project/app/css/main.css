@@ -335,8 +335,8 @@ hr {
 .app-functions__func {
 	margin-bottom: 1.75rem;
 }
-.app-info__prop, .app-info__prop-value,
-.app-info__license, .app-info__requirements-value {
+.app-info__prop, .app-info__value,
+.app-info__prop-value, .app-info__license, .app-info__requirements-value {
 	color: var(--app-details-txt-color);
 }
 .app-info__props {
