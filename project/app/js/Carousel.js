@@ -52,14 +52,16 @@ function Carousel(setting) {
 		if (privates.opt.position < 0) {
 			privates.sel.wrap.classList.add('apps-carousel__row_no-animation');
 			privates.opt.position = privates.opt.maxPosition + 1;
-			privates.sel.wrap.style["transform"] = `translateX(-${privates.opt.position * privates.opt.slideWidth}px)`;
+			privates.sel.wrap.style.transform = `translateX(${(-1)*privates.opt.position * privates.opt.slideWidth}px)`;
 			
 			privates.opt.position = privates.opt.maxPosition;
 		}
 		setTimeout(function() {
+			console.log(privates.opt.position);
+
 			privates.sel.wrap.classList.remove('apps-carousel__row_no-animation');
 			hlPoint(privates.opt.position);
-			privates.sel.wrap.style["transform"] = `translateX(-${privates.opt.position * privates.opt.slideWidth}px)`;
+			privates.sel.wrap.style.transform = `translateX(${(-1)*privates.opt.position * privates.opt.slideWidth}px)`;
 		}, 50);
 	};
 	// Next slide
@@ -70,15 +72,17 @@ function Carousel(setting) {
 		if (privates.opt.position > privates.opt.maxPosition) {
 			privates.sel.wrap.classList.add('apps-carousel__row_no-animation');
 			privates.opt.position = privates.opt.minPosition - 1;
-			privates.sel.wrap.style["transform"] = `translateX(${(-1)*privates.opt.position * privates.opt.slideWidth}px)`;
+			privates.sel.wrap.style.transform = `translateX(${(-1)*privates.opt.position * privates.opt.slideWidth}px)`;
 
 			privates.opt.position = privates.opt.minPosition;
 		}
 
 		setTimeout(function() {
+			console.log(privates.opt.position);
+
 			privates.sel.wrap.classList.remove('apps-carousel__row_no-animation');
 			hlPoint(privates.opt.position);
-			privates.sel.wrap.style["transform"] = `translateX(${(-1)*privates.opt.position * privates.opt.slideWidth}px)`;
+			privates.sel.wrap.style.transform = `translateX(${(-1)*privates.opt.position * privates.opt.slideWidth}px)`;
 		}, 50);
 	};
 	// Go To Slide 
@@ -95,7 +99,7 @@ function Carousel(setting) {
 		privates.opt.position = position;
 
 		hlPoint(privates.opt.position);
-		privates.sel.wrap.style["transform"] = `translateX(-${position * privates.opt.slideWidth}px)`;
+		privates.sel.wrap.style.transform = `translateX(${(-1)*position * privates.opt.slideWidth}px)`;
 	}
 	/* Public methods */
 	//Initialize handlers on buttons < > && start position

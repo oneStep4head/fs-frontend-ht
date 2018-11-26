@@ -7,9 +7,11 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" type="text/css" href="css/ui-kit.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<!-- <script type="module" src="js/renderApps.js"></script>
-	<script type="module" src="js/Carousel.js"></script>
-	<script type="module" src="js/index.js"></script> -->
+	<!-- <script type="module" src="js/renderApps.js"></script> -->
+	<script type="module" src="js/utils.js"></script>
+	<script type="module" src="js/renderApps.js"></script>
+	<script type="module" src="js/pageInit/app.js"></script>
+
 	<title>Каталог Приложений</title>
 </head>
 
@@ -32,8 +34,8 @@
 			</div>
 		</div>
 	</header>
-	<div class="wrapper l-clearfix">
-		<div class="l-grid_1-3">
+	<div class="wrapper">
+		<div class="l-grid_1-3 l-grid_baseline_start">
 			<nav class="app-nav content">
 				<header class="app-nav__header">
 					<div class="l-row">
@@ -44,52 +46,112 @@
 					<hr>
 				</header>
 				<ul class="app-nav__app-list">
-					<li class="app-nav__app-item">
-						<a href="" class="c-link app-nav__link">Стандартный пакет</a>
-					</li>
+<!-- Some place for templates -->
 				</ul>
 			</nav>
 		</div>
-		<div class="l-grid_2-3">
-			<main class="app-details content">
-				<header class="app-details__header">
+		<div class="l-grid_2-3 l-grid_baseline_star app-main">
+			<main class="app-desc content">
+				<header class="app-title__header">
 					<div class="l-row">
 						<div class="l-grid_1">
-							<h4 class="h4 app-details__app-title">Пакеты приложений</h4>
+							<h4 class="h4 app-title__app-title">Пакеты приложений</h4>
 						</div>
 					</div>
 					<hr>
 				</header>
-				<div class="app-details__info app-info">
+				<section class="app-details app-info l-clearfix">
+					<figure class="app-details__promo">
+						<img src="./assets/apps/app-5.png" alt="App Logo" class="app-details__logo">
+						<button class="c-btn c-btn_primary c-icon-btn app-details__btn">В корзину
+							<svg class="i-bascet-svg"><use xlink:href="#i-bascet-svg"></svg>
+						</button>
+					</figure>
 					<time class="app__date">12 марта 2017</time>
-					<div class="app-info__proprs">
-						<p class="app-info-prop">
-							<span class="app-info__prop-value"></span>
+					<p class="app-info__license">Приложение лицензировано в 25 банках</p>
+					<div class="app-info__props">
+						<p class="app-info__prop">Тип Приложения:
+							<span class="app-info__prop-value">Базовое</span>
 						</p>
-						<p class="app-info__req">
-							<span class="app-info__req-value"></span>
+						<p class="app-info__prop">Разработчик:
+							<span class="app-info__prop-value">ЦФТ</span>
+						</p>
+						<p class="app-info__prop">Код по каталогу:
+							<span class="app-info__prop-value">1B365001</span>
 						</p>
 					</div>
-				</div>
+					<p class="app-info__requirements">Требования:
+						<span class="app-info__requirements-value">совместимо с v.14.1, ТЯ v.7.4.0.0 и выше, при наличии лицензии на Проигрыватель форм в web</span>
+					</p>
+				</section>
+				<section class="app-functions">
+					<header class="app-functions__header">
+						<h6 class="h6 app-functions__title">ОСНОВНЫЕ ФУНКЦИИ</h6>
+						<hr>
+					</header>
+					<ul class="app-functions__list">
+						<li class="app-functions__func">Выполнение операций по банковским продуктам, используемым клиентом, и оформление новых продуктов банка непосредственно из Единого окна</li>
+					</ul>
+				</section>
 			</main>
 		</div>
 	</div>
-	<template class="app-template">
-		<div class="l-grid_1-3 apps__item">
-			<figure class="app">
-				<a href="#" class="c-link app__link">
-					<img class="app__img" src="" alt="App Logo" title="App logo">
-				</a>
-				<a href="#" class="c-link app__link">
-					<figcaption class="app__name"></figcaption>
-				</a>
-				<time class="app__date"></time>
+	<template class="app-nav__app-item-template">
+		<li class="app-nav__app-item">
+			<a href="" class="c-link app-nav__link">Стандартный пакет</a>
+		</li>
+	</template>
+	<template class="app-desc-template">
+		<header class="app-title__header">
+			<div class="l-row">
+				<div class="l-grid_1">
+					<h4 class="h4 app-title__app-title">Пакеты приложений</h4>
+				</div>
+			</div>
+			<hr>
+		</header>
+		<section class="app-details app-info l-clearfix">
+			<figure class="app-details__promo">
+				<img src="./assets/apps/app-5.png" alt="App Logo" class="app-details__logo">
+				<button class="c-btn c-btn_primary c-icon-btn app-details__btn">В корзину
+					<svg class="i-bascet-svg"><use xlink:href="#i-bascet-svg"></svg>
+				</button>
 			</figure>
-		</div>
+			<time class="app__date">12 марта 2017</time>
+			<p class="app-info__license">Приложение лицензировано в 25 банках</p>
+			<div class="app-info__props">
+				<p class="app-info__prop">Тип Приложения:
+					<span class="app-info__prop-value">Базовое</span>
+				</p>
+				<p class="app-info__prop">Разработчик:
+					<span class="app-info__prop-value">ЦФТ</span>
+				</p>
+				<p class="app-info__prop">Код по каталогу:
+					<span class="app-info__prop-value">1B365001</span>
+				</p>
+			</div>
+			<p class="app-info__requirements">Требования:
+				<span class="app-info__requirements-value">совместимо с v.14.1, ТЯ v.7.4.0.0 и выше, при наличии лицензии на Проигрыватель форм в web</span>
+			</p>
+		</section>
+		<section class="app-functions">
+			<header class="app-functions__header">
+				<h6 class="h6 app-functions__title">ОСНОВНЫЕ ФУНКЦИИ</h6>
+				<hr>
+			</header>
+			<ul class="app-functions__list">
+				<li class="app-functions__func">Выполнение операций по банковским продуктам, используемым клиентом, и оформление новых продуктов банка непосредственно из Единого окна</li>
+			</ul>
+		</section>
 	</template>
-	<template class="carousel-point-template">
-		<button class="carousel-point"></button>
-	</template>
+	<svg width=0 height=0 style="display: none">
+			<symbol id="i-bascet-svg" viewbox="0 0 32 32" >
+				<g fill="none" fill-rule="evenodd" stroke="red" stroke-linecap="round">
+					<path stroke-width="2" d="M6.374 13.224h18.702c.275 0 .434.047.354.344l-2.85 10.686c-.08.292-.294.64-.482.64H9.352c-.187 0-.401-.436-.481-.734L6.02 13.67c-.08-.292.078-.446.353-.446zM13.78 7l-5.446 6.224M17.67 7l5.447 6.224"/>
+					<path d="M12 17.114v3.113M20 17.114v3.113M16 17.114v3.113"/>
+				</g>
+			</symbol>
+	</svg>
 </body>
 
 </html>

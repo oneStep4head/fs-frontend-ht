@@ -1,9 +1,9 @@
-import { getApps, renderApps } from "/js/renderApps.js";
+import { getApps, renderCarouselApps } from "/js/renderApps.js";
 import { Carousel } from "/js/Carousel.js";
 
 window.onload = function () {
-	getApps()
-		.then(renderApps)
+	getApps('app_packages.json')
+		.then(renderCarouselApps)
 		.then(function () {
 			let carousel = new Carousel({
 				"main": ".apps-carousel",

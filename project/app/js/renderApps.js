@@ -1,9 +1,11 @@
-export { getApps, renderApps };
+export { getApps, renderCarouselApps, renderAppsList };
+import {getUrlParams} from "/js/utils.js";
 
-function getApps() {
+function getApps(file) {
 	return new Promise(function (resolve, reject) {
 		let xhr = new XMLHttpRequest();
-		xhr.open('GET', '/api/app_packeges.json', true);
+		let url = '/api/' + file;
+		xhr.open('GET', url, true);
 		xhr.responseType = 'json';
 		xhr.send();
 
@@ -24,7 +26,7 @@ function rndInt(min, max) {
 	return rand;
 }
 
-function renderApps(apps) {
+function renderCarouselApps(apps) {
 	console.log('Starts to render apps...');
 	let firstAppItem, lastAppItem;
 
@@ -41,7 +43,7 @@ function renderApps(apps) {
 
 		let appLinks = appTemplate.content.querySelectorAll('.app__link');
 		for (let j = 0; j < appLinks.length; j++) {
-			appLinks[j].setAttribute('href', 'app.html?' + app.guid);
+			appLinks[j].setAttribute('href', 'app.html?' + 'app=' + app.guid);
 		}
 		let appDate = appTemplate.content.querySelector('.app__date');
 		appDate.innerHTML = new Date(app.lastUpdate).toLocaleString('ru',
@@ -52,7 +54,7 @@ function renderApps(apps) {
 			});
 
 		let appImg = appTemplate.content.querySelector('.app__img');
-		appImg.setAttribute('src',`${app.imgURL}`);
+		appImg.setAttribute('src', `${app.imgURL}`);
 
 		let appName = appTemplate.content.querySelector('.app__name');
 		appName.innerHTML = app.title;
@@ -71,4 +73,41 @@ function renderApps(apps) {
 	appsWrapper.appendChild(firstAppItem);
 	appsWrapper.insertBefore(lastAppItem, appsWrapper.firstChild);
 
+}
+
+function renderAppsList() {
+	getApps()
+		.then(function (apps) {
+			let appNavItemTmplt = document.querySelector('.app-nav__app-item-template');
+			let appNavItemWrap = document.querySelector('.app-nav__app-list');
+			
+			//Filthy way to aquilize the aside height and the main height 
+			document.querySelector('.app-nav.content').style.minHeight = 
+			getComputedStyle(document.querySelector('.app-desc.content')).height;
+
+			for (let i = 0; i < apps.length; i++) {
+				let app = apps[i];
+
+				let appNavLink = appNavItemTmplt.content.querySelector('.app-nav__link');
+				appNavLink.setAttribute('href', 'app.html?' + 'app=' + app.guid);
+				appNavLink.innerHTML = app.title;
+
+				appNavItemWrap.appendChild(appNavItemTmplt.content.cloneNode(true));
+			}
+		})
+		.catch(function (error) { console.warn('Something goes wrong', error) });
+}
+
+function renderAppDetails() {
+	let appGUID = getUrlParams(window.location.search).app;
+	appGUID += '.json';
+
+	getApps(appGUID)
+		.then(function(app){
+			let appDescTmplt = document.querySelector('.app-desc-template');
+			let appDescWrap = document.querySelector('.app-desc.content');
+
+
+		})
+		.catch(function(error) {console.warn('Somethind goes wrong' + error)});
 }

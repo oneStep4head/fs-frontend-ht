@@ -27,7 +27,7 @@
 	padding: 0	
 }
 svg * {
-	stroke: inherit;
+	stroke: currentColor;
 }
 [disabled] {
 	opacity: 0.5;
@@ -58,6 +58,9 @@ html, body {
 }
 .h5 {
 	font-size: 1.5rem;
+}
+.h6 {
+	font-size: 1.3rem;
 }
 .p{
 	color: #222;
@@ -136,7 +139,7 @@ html, body {
 	color: var(--secondary-color);
 	text-decoration: none;
 }
-.с-btn {
+.c-btn {
 	display: inline-block;
 	padding: 0.5rem 1rem;
 	width: 100%;
@@ -151,39 +154,39 @@ html, body {
 	line-height: var(--line-height-regular);
 	cursor: pointer;
 }
-.с-btn:disabled {
+.c-btn:disabled {
 	cursor: not-allowed;
 }
-.с-btn_primary {
+.c-btn_primary {
 	background-color: var(--primary-color);
 }
-.с-btn_primary:hover {
+.c-btn_primary:hover {
 	color: var(--secondary-color);
 	stroke: var(--secondary-color);
 }
-.с-btn_secondary {
+.c-btn_secondary {
 	background-color: var(--secondary-color);
 }
-.с-btn_secondary:hover {
+.c-btn_secondary:hover {
 	color: var(--primary-color);
 }
-.с-btn:active {
+.c-btn:active {
 	color: var(--default-btn-txt-color);
 }
 .c-icon-btn {
 	width: 200px;
 	position: relative;
-	background-image: url(../assets/img/icon-basket.svg);
+	/* background-image: url(../assets/img/icon-basket.svg);
 	background-repeat: no-repeat;
 	background-size: 1rem 1rem;
 	background-origin: content-box;
-	background-position: center right;
+	background-position: center right; */
 }
 .c-icon-btn:hover {
-	background-image: url(../assets/img/icon-basket-hover.svg);
+	/* background-image: url(../assets/img/icon-basket-hover.svg); */
 }
 .c-icon-btn:active {
-	background-image: url(../assets/img/icon-basket-active.svg);
+	/* background-image: url(../assets/img/icon-basket-active.svg); */
 }
 /* radio checkbox and toggler */
 input[type="radio"], input[type="checkbox"] {
@@ -266,7 +269,7 @@ input[type="checkbox"]:checked + .c-toggler__btn::before {
 	margin-left: 34px ;
 }
 /* INPUT 
-Сломал глаза, но так и не увидел, почему не работает ::placeholder, походу тайпа где-то :< */
+cломал глаза, но так и не увидел, почему не работает ::placeholder, походу тайпа где-то :< */
 .c-label {
 	width: 100%;
 	position: relative;
