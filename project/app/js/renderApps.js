@@ -112,9 +112,41 @@ function renderAppDetails() {
 			.setAttribute('src', app.imgURL);
 
 			appDescTmplt.querySelector('.app-details__btn').setAttribute('data-app-guid', app.guid);
-			appDescTmplt.querySelector('.app__date').innerHTML = app.lastUpdate;
+			appDescTmplt.querySelector('.app__date').innerHTML = 
+				new Date(app.lastUpdate).toLocaleString('ru',
+					{
+						year: 'numeric',
+						month: 'long',
+						day: 'numeric'
+					});
+			
 			appDescTmplt.querySelector('.app-info__license').innerHTML = app.licenseInfo;
 			
+			let propValueTmplt = document.querySelector('.app-info__prop-value-template').content;
+			let propValueWrap = appDescTmplt.querySelector('.app-info__props');
+
+			for(let prop in app.description) {
+				propValueTmplt.querySelector('.app-info__prop').innerHTML = prop;
+				propValueTmplt.querySelector('.app-info__value').innerHTML = app.description[prop];
+
+				propValueWrap.appendChild(propValueTmplt.cloneNode(true));
+			}
+
+			appDescTmplt.querySelector('.app-info__requirements-value'). innerHTML = app.requirements;
+
+			let appFuncTmplt = document.querySelector('.app-functions__func-template').content;
+			let appFuncWrap = appDescTmplt.querySelector('.app-functions__list');
+
+			app.features.forEach(function (feature) {
+				appFuncTmplt.querySelector('.app-functions__func').innerHTML = feature;
+				appFuncWrap.appendChild(appFuncTmplt.cloneNode(true));
+			});
+
+			appDescWrap.appendChild(appDescTmplt.cloneNode(true));
 		})
-		.catch(function(error) {console.warn('Somethind goes wrong' + error)});
+		.then(function(){
+			//Filthy way to equilize the aside height and the main height 
+			document.querySelector('.app-nav.content').style.minHeight = 
+			getComputedStyle(document.querySelector('.app-desc.content')).height;})
+		.catch(function(error) {console.warn('Somethind goes wrong: ' + error)});
 }

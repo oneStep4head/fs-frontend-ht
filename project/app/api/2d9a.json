@@ -1,0 +1,19 @@
+{
+	"imgURL":"assets/apps/app-6.png",
+	"id": 6,
+	"title": "черепаха пиццу поедака",
+	"lastUpdate": 1489195758631,
+	"guid": "2d9a",
+	"licenseInfo": "Лицензирова Учителем Сплинтером",
+	"description": {
+		"Код по каталогу": "1B365006",
+		"Разработчик": "Shradder Inc.",
+		"Тип Приложения": "Восточные единоборства"
+	},
+	"requirements": "Нун-чаки и оранжевая повязка",
+	"features": [	"Teenage",
+								"Mutant",
+								"Ninja",
+								"Turtle"],
+	"price": 25
+}

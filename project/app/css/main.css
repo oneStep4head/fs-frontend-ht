@@ -301,6 +301,9 @@ hr {
 .app-nav__link:active, .app-nav__link_active {
 	color: var(--activ-item-color);
 }
+.app-title__title {
+	text-transform: capitalize;
+}
 .app-details__promo {
 	float: right;
 	width: 17rem;

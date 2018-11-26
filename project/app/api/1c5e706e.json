@@ -1,0 +1,17 @@
+{
+	"imgURL":"assets/apps/app-5.png",
+	"id": 5,
+	"title": "strutting leo",
+	"lastUpdate": 1489195758631,
+	"guid": "1c5e706e",
+	"licenseInfo": "Licensed by Oscar Academy",
+	"description": {
+		"Код по каталогу": "1B365005",
+		"Разработчик": "Django().Unchained().Inc()",
+		"Тип Приложения": "World Famous"
+	},
+	"requirements": "Over 40 films without the Oscar's Grand",
+	"features": [	"Embeds a things while you're asleep.",
+								"Bear Grylls v2.0"],
+	"price": 150
+}
