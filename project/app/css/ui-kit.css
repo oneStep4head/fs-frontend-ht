@@ -176,17 +176,7 @@ html, body {
 .c-icon-btn {
 	width: 200px;
 	position: relative;
-	/* background-image: url(../assets/img/icon-basket.svg);
-	background-repeat: no-repeat;
-	background-size: 1rem 1rem;
-	background-origin: content-box;
-	background-position: center right; */
-}
-.c-icon-btn:hover {
-	/* background-image: url(../assets/img/icon-basket-hover.svg); */
-}
-.c-icon-btn:active {
-	/* background-image: url(../assets/img/icon-basket-active.svg); */
+
 }
 /* radio checkbox and toggler */
 input[type="radio"], input[type="checkbox"] {
@@ -268,8 +258,7 @@ input[type="checkbox"]:checked + .c-toggler__btn {
 input[type="checkbox"]:checked + .c-toggler__btn::before {
 	margin-left: 34px ;
 }
-/* INPUT 
-cломал глаза, но так и не увидел, почему не работает ::placeholder, походу тайпа где-то :< */
+/* INPUT  */
 .c-label {
 	width: 100%;
 	position: relative;

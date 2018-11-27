@@ -1,5 +1,5 @@
 export { getApps, renderCarouselApps, renderAppsList, renderAppDetails };
-import {getUrlParams} from "/js/utils.js";
+import { getUrlParams } from "/js/utils.js";
 
 function getApps(file) {
 	return new Promise(function (resolve, reject) {
@@ -12,7 +12,7 @@ function getApps(file) {
 		xhr.onload = function (e) {
 			if (xhr.status != 200) {
 				// TODO в reject передал функцию, в которой логировал создание новой ошибки. Зачем?)
-				reject(Error('Upss.. Something went wrong. Error text:\n' + xhr.statusText));
+				reject(new Error('Uups.. Something went wrong. Error text:\n' + xhr.statusText));
 			} else {
 				resolve(xhr.response);
 			}
@@ -75,64 +75,68 @@ function renderCarouselApps(apps) {
 
 }
 
-function renderAppsList(list) {
-	getApps(list)
-		.then(function (apps) {
-			let appNavItemTmplt = document.querySelector('.app-nav__app-item-template');
-			let appNavItemWrap = document.querySelector('.app-nav__app-list');
-			
-			//Filthy way to equilize the aside height and the main height 
-			document.querySelector('.app-nav.content').style.minHeight = 
-			getComputedStyle(document.querySelector('.app-desc.content')).height;
+function renderAppsList(apps) {
+	let appNavItemTmplt = document.querySelector('.app-nav__app-item-template').content;
+	let appNavItemWrap = document.querySelector('.app-nav__app-list');
 
-			for (let i = 0; i < apps.length; i++) {
-				let app = apps[i];
+	//Filthy way to equilize the aside height and the main height 
+	document.querySelector('.app-nav.content').style.minHeight =
+		getComputedStyle(document.querySelector('.app-desc.content')).height;
 
-				let appNavLink = appNavItemTmplt.content.querySelector('.app-nav__link');
-				appNavLink.setAttribute('href', 'app.html?' + 'app=' + app.guid);
-				appNavLink.innerHTML = app.title;
+	for (let i = 0; i < apps.length; i++) {
+		let app = apps[i];
 
-				appNavItemWrap.appendChild(appNavItemTmplt.content.cloneNode(true));
-			}
-		})
-		.catch(function (error) { console.warn('Something goes wrong', error) });
+		let appNavLink = appNavItemTmplt.querySelector('.app-nav__link');
+		appNavLink.setAttribute('href', 'app.html?' + 'app=' + app.guid);
+		appNavLink.innerHTML = app.title;
+		if (getUrlParams(window.location.search).app == app.guid) appNavLink.classList.add('app-nav__link_active');
+
+		appNavItemWrap.appendChild(appNavItemTmplt.cloneNode(true));
+
+		appNavLink.classList.remove('app-nav__link_active');
+	}
 }
 
 function renderAppDetails() {
 	let appGUID = getUrlParams(window.location.search).app;
+	if (appGUID === undefined) {
+		window.location = document.querySelector('.app-nav__link').getAttribute('href');
+		return;
+	} 
+	
 	let appDesc = appGUID + '.json';
-
+	
 	getApps(appDesc)
-		.then(function(app){
+		.then(function (app) {
 			let appDescTmplt = document.querySelector('.app-desc-template').content;
 			let appDescWrap = document.querySelector('.app-desc.content');
 
 			appDescTmplt.querySelector('.app-title__title').innerHTML = app.title;
 			appDescTmplt.querySelector('.app-details__logo')
-			.setAttribute('src', app.imgURL);
+				.setAttribute('src', app.imgURL);
 
 			appDescTmplt.querySelector('.app-details__btn').setAttribute('data-app-guid', app.guid);
-			appDescTmplt.querySelector('.app__date').innerHTML = 
+			appDescTmplt.querySelector('.app__date').innerHTML =
 				new Date(app.lastUpdate).toLocaleString('ru',
 					{
 						year: 'numeric',
 						month: 'long',
 						day: 'numeric'
 					});
-			
+
 			appDescTmplt.querySelector('.app-info__license').innerHTML = app.licenseInfo;
-			
+
 			let propValueTmplt = document.querySelector('.app-info__prop-value-template').content;
 			let propValueWrap = appDescTmplt.querySelector('.app-info__props');
 
-			for(let prop in app.description) {
+			for (let prop in app.description) {
 				propValueTmplt.querySelector('.app-info__prop').innerHTML = prop;
 				propValueTmplt.querySelector('.app-info__value').innerHTML = app.description[prop];
 
 				propValueWrap.appendChild(propValueTmplt.cloneNode(true));
 			}
 
-			appDescTmplt.querySelector('.app-info__requirements-value'). innerHTML = app.requirements;
+			appDescTmplt.querySelector('.app-info__requirements-value').innerHTML = app.requirements;
 
 			let appFuncTmplt = document.querySelector('.app-functions__func-template').content;
 			let appFuncWrap = appDescTmplt.querySelector('.app-functions__list');
@@ -144,9 +148,10 @@ function renderAppDetails() {
 
 			appDescWrap.appendChild(appDescTmplt.cloneNode(true));
 		})
-		.then(function(){
+		.then(function () {
 			//Filthy way to equilize the aside height and the main height 
-			document.querySelector('.app-nav.content').style.minHeight = 
-			getComputedStyle(document.querySelector('.app-desc.content')).height;})
-		.catch(function(error) {console.warn('Somethind goes wrong: ' + error)});
+			document.querySelector('.app-nav.content').style.minHeight =
+				getComputedStyle(document.querySelector('.app-desc.content')).height;
+		})
+		.catch(function (error) { console.warn('Somethind goes wrong: ' + error) });
 }
